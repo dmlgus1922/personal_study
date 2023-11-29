@@ -1,0 +1,94 @@
+* NLP에서의 각 작업은 서로 비슷하지만 분명한 차이점을 지니고 있다.
+  모델을 이용해 이루어낼 목표를 생각하며 어떤 작업을 위주로 할 것인지 정하는 것이 중요한 듯하다.
+
+* 아래는 LLM 관련 정보를 찾아보며 알게 된 용어들이다.
+
+1. 자연어처리 (NLP : Natural Language Processing)
+    인간의 언어(자연어)를 컴퓨터가 이해하고 처리하는 과정
+    - 텍스트 분류(classification): 문서나 문장을 특정 카테고리로 분류하는 작업
+        ex) 스팸 메일 필터링, 감정 분석, 뉴스 기사 분류 등
+    - 개체명 인식(NER: Named Entity Recognition) : 문장에서 특정 유형의 개체를 식별하는 작업
+        ex) "2023년 여름, 홍길동이 카페에서 뜨거운 아메리카노를 마셨다"
+            날짜 : 2023년, 인물 : 홍길동, 장소 : 카페 ...
+    - 기계번역(Macchine Translation): 하나의 언어에서 다른 언어로 텍스트를 번역하는 작업
+    - 음성인식(Speech Recognition): 음성을 텍스트로 변환하는 작업
+    - 자동 요약(Automatic Summarization): 긴 텍스트를 간결하게 요약하는 작업
+    - 대화형 에이전트(Chatbot): 사용자와 자연스러운 대화를 수행하는 컴퓨터 프로그래밍
+    - 문장 생성(Text Generation): 주어진 문맥에서 새로운 문장을 생성하는 작업
+    - 의미론적 분석(Sematic Analysis): 문장의 의미를 이해하고 추출하는 작업. 문장 속의 단어나 구의 의미적 관계를 파악한다.
+        ex) 쇼핑몰 리뷰의 긍정도 평가
+
+2. 자연어 이해(NLU : Natural Language Understanding)
+    텍스트에서 의미를 추출하고 이를 이해하는 작업에 중점을 둔 NLP의 하위 집합
+    주로 텍스트의 의미적 해석에 중점을 둠
+
+3. RAG(Retrieval-Augmented Generation)
+    대화형 AI시스템과 검색 기능을 통합해 문맥 이해, 정보 검색, 답변 생성을 효과적으로 수행하는 데 중점을 둠
+    - 검색기반접근: 대화에서 발생하는 문장 또는 질문에 대한 답변을 생성할 때, 기존의 정보 검색 기술을 사용.
+    - 구성 : Retrieval module, Generation module
+
+4. 지식그래프
+    현실 세계의 지식을 그래프 형태로 표현하는 데이터 구조. 노드와 엣지로 표현된다.
+    - 노드 (entity): 사물, 사건, 개념 등을 나타내며, 고유 식별자와 함께 해당 엔터티의 특징을 포함한다.
+    - 엣지(relationship): 노드 간의 관계.
+        ex) "인물 A는 B 도시에서 태어났다." 
+            -> 인물A : 인물, B도시: 장소
+            -> (인물A(엔터티, 노드), 출생지(엣지), B도시(엔터티, 노드))
+
+5. 기계독해(MRC, Machine Reading Comprehension)
+    텍스트 독해 능력을 갖춘 기계가 문서나 문장을 이해하고 주어진 질문에 대한 답을 답하는 작업
+    - 컨텍스트 이해: 문맥을 이해하고 주어진 질문이나 쿼리에 대한 답변을 찾기 위해 문맥을 활용
+    - 정보 추출과 답변 생성: 문서나 문장에서 특정 정보를 추출한 뒤 주어진 문맥을 기반으로 답변 생성
+    - text generation과의 차이점
+        · mrc는 주어진 문맥에서 질문에 대한 답을 추론하는 작업, 특정 정보를 추출하거나 이해해서 정확한 답을 도출함
+        · text generation은 주어진 문맥을 바탕으로 새로운 텍스트를 생성하는 작업
+
+6. 벤치마크
+    어떤 시스템이나 프로그램의 성능이나 효율성을 평가하고 비교하기 위한 기준이나 척도
+    AI분야: 모델이나 알고리즘이 어떤 작업을 얼마나 잘 수행하는지 측정하는 데 사용
+    - 성능평가: AI모델이나 알고리즘의 성능을 정량적으로 평가. 작업 수행의 정확도, 속도 등 평가
+    - 비교: 서로 다른 모델이나 알고리즘을 비교해 어떤 것이 더 효과적인지 확인. 이를 통해 최신 기술 혹은 접근 방식이 얼마나 진보했는지를 알 수도 있음
+    - 진전 추적: 새 기술의 진전도를 추적.
+    - 표준화: 일부 벤치마크는 특정 작업이나 데이터셋에 대한 표준화된 평가 기준을 제공해 공통된 평가 지표 제공
+
+7. SQuAD(Stanford Question Answering Dataset)
+    자연어 처리 벤치마크 데이터셋 중 하나로, 스탠포드 대학에서 만들어졌으며, 모델이 주어진 질문에 대한 정확한 답변을 추론하는 데에 사용
+
+8. ICL(in-context learning)
+    해결하고자 하는 문제에 관해 몇가지 예시를 들어줌으로써 모델이 적절한 답변을 생성하길 바라는 기법
+    모델의 기울기를 수정하지 않고 prompt 생성 시에만 예제를 듦
+    - Zero-shot: 예제를 들지 않고 주어진 문장에서 prompt 생성
+    - one-shot: 하나의 예제를 들어 주며 문장에서 prompt 생성
+    - few-shot: 여러 예제를 들어주며 문장에서 prompt 생성
+    - 요청 때마다 예제를 입력해야 하므로 계산비용, 메모리비용, 저장비용 등이 발생
+    - 복잡한 task에선 성능을 내지 못할 수 있으며 
+
+9. PEFT(Parameter Efficient Fine-Tuning)
+    적은 양의 파라미터를 학습함으로써 빠른 시간 내에 새로운 문제를 비슷한 성능으로 풀 수 있도록 함
+    - 어댑터 기법: 이미 학습 완료된 pre-trained 모델의 사이사이에 학습 가능한 작은 feed forward networks를 삽입하는 구조
+        pre-trained 모델의 가중치는 고정, feed forward networks만 아키텍쳐 중간에 추가함으로써 적은 수의 파라미터로 모델을 튜닝
+
+10. LoRA(Low-Rank Adaption)
+    고정된 가중치를 가진 pre-trained 모델에 학습 가능한 rank decomposition 행렬을 삽입
+
+11. hallucination(환각)
+    LLM의 추론 결과로 나타난 문장 속 잘못된 정보를 다루는 것으로, hallucination의 비율이 낮아야 좋은 성능의 모델임
+
+12. instruction-tuned 모델
+    - aligning: 사용자의 질문에 적절한 답변을 제공하지 않고 질문의 variation을 만들어 대답하는 경우
+    - aligning 현상을 막기 위해 (instruction, output) 짝으로 데이터셋을 구성, 학습을 진행
+    - 다양한 task 종류로, 성능 측정에 소요되는 비용이 큼
+
+13. RLHF(Reinforcement Learning from Human Feedback)
+    - 모델의 추론 결과를 사람이 평가해 이를 반영하여 강화 학습을 진행
+    - 지속적인 human reward를 필요로 하므로 높은 비용 소요
+        -> human reward를 예측하는 LM을 학습, 사람 대신 평가를 진행하는 방법 존재
+    - ChatGPT: 사람에 따른 리뷰 기준이 애매하므로 점수가 아닌 등수를 매기는 형식으로 진행
+    - https://velog.io/@nellcome/RLHF%EB%9E%80
+
+14. conversational memory
+    - 챗봇과 같은 llm에게 이전의 상호작용을 기억하게 함으로써 새 prompt에 대해 일관성있는 답을 내리도록 함
+    - langchain : 대화 기억을 위한 방법론을 제공하는 프레임워크(python). OpenAI 모델을 지원함
+        https://www.pinecone.io/learn/series/langchain/langchain-conversational-memory/ 
+
+
